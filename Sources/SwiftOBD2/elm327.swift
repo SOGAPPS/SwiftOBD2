@@ -248,7 +248,8 @@ class ELM327 {
     func getStatus() async throws -> Status? {
         logger.info("Getting status")
         let statusCommand = OBDCommand.Mode1.status
-        let statusResponse = try await sendCommand(statusCommand.properties.command)
+        let statusResponse = ["86 F1 18 41 01 00 04 00 00 D5 ", "86 F1 12 41 01 82 07 65 00 B9 "]
+//        let statusResponse = try await sendCommand(statusCommand.properties.command)
         logger.debug("Status response: \(statusResponse)")
         guard let statusData = canProtocol?.parcer(statusResponse).first?.data,
               let decodedStatus = statusCommand.properties.decode(data: statusData)
