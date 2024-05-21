@@ -248,6 +248,7 @@ class ELM327 {
     func getStatus() async throws -> Status? {
         logger.info("Getting status")
         let statusCommand = OBDCommand.Mode1.status
+        // TEST: 0101
         let statusResponse = ["86 F1 18 41 01 00 04 00 00 D5 ", "86 F1 12 41 01 82 07 65 00 B9 "]
 //        let statusResponse = try await sendCommand(statusCommand.properties.command)
         logger.debug("Status response: \(statusResponse)")
@@ -263,7 +264,9 @@ class ELM327 {
         var dtcs: [ECUID:[TroubleCode]]  = [:]
         logger.info("Scanning for trouble codes")
         let dtcCommand = OBDCommand.Mode3.GET_DTC
-        let dtcResponse = try await sendCommand(dtcCommand.properties.command)
+        // TEST: 03
+        let dtcResponse = ["87 F1 18 43 00 00 00 00 00 00 D3 ", "87 F1 12 43 15 53 13 28 00 00 70 "]
+//        let dtcResponse = try await sendCommand(dtcCommand.properties.command)
 
         guard let messages = canProtocol?.parcer(dtcResponse) else {
             return [:]
