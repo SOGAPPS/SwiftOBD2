@@ -177,7 +177,7 @@ let protocols: [PROTOCOL: CANProtocol] = [
     .protocol2: ISO_15765_4_29bit_500k(),
     .protocol3: ISO_9141_2(),
     .protocol4: ISO_15765_4_29bit_250k(),
-    .protocol5: ISO_15765_4_11bit_500k(),
+    .protocol5: ISO_14230_4_KWP_Fast(),
     .protocol6: ISO_15765_4_11bit_500k(),
     .protocol7: ISO_15765_4_29bit_500k(),
     .protocol8: ISO_15765_4_11bit_250K(),
